@@ -1,0 +1,61 @@
+#include <cstdlib>
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+int findmin(int dizi[])
+{
+            int min=dizi[0],i;
+            for(i=0;i<sizeof(dizi)/4;i++)
+            {
+                                    if(dizi[i]<min)
+                                         min=dizi[i];           
+            }
+            return min;      
+}
+int findmax(int dizi[])
+{
+            int max=dizi[0],i;
+            for(i=0;i<sizeof(dizi)/4;i++)
+            {
+                                    if(dizi[i]>max)
+                                         max=dizi[i];          
+            }
+            return max;      
+}
+double findavg(int dizi[])
+{
+    int toplam=0,i;
+    for(i=0;i<sizeof(dizi)/4;i++)
+    {
+        toplam=toplam+dizi[i];
+    }
+    return toplam/(sizeof(dizi)/4);
+}
+double findvar(int dizi[])
+{
+    int i;
+    double ort=findavg(dizi),toplam=0;
+    for(i=0;i<sizeof(dizi)/4;i++)
+    {
+        toplam=toplam+((dizi[i]-ort)*(dizi[i]-ort));
+    }
+    return toplam/((sizeof(dizi)/4)-1);
+}
+double findstd(int dizi[])
+{
+       double vary=findvar(dizi);
+       return sqrt(vary);
+       }
+       
+int main(int argc, char *argv[])
+{
+    int dizi[] ={5,6,8,9,22,1,0,23,5,99},minimum,maximum;
+    double ortalama,standart,varyans;
+    minimum=findmin(dizi);
+    maximum=findmax(dizi);
+    ortalama=findavg(dizi);
+    printf("%d \n",minimum);
+    system("PAUSE");
+    return EXIT_SUCCESS;
+}
