@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct node
+{
+    int icerik;
+    struct node * ileri;
+}*bas,*gec;
+int getindis(struct node *a,int sayi,int boyut)
+{
+    int i;
+    for(i=0;i<boyut;i++)
+    {
+        if(a->icerik==sayi)
+
+            return i;
+
+        a=a->ileri;
+    }
+    return -1;
+}
+int main()
+{
+    int i,n,a,j;
+    printf("Dizinin boyutunu giriniz");
+    scanf("%d",&n);
+    gec=bas;
+    for(i=0;i<n;i++)
+    {
+        printf("%d. Elemani girin",i+1);
+        gec = (node *) malloc(sizeof(struct node));
+        scanf("%d",&a);
+        gec->icerik=a;
+
+        gec=gec->ileri;
+    }
+    printf("**%d**",bas->icerik);
+    printf("Indisini bulmak istediginiz elemanı giriniz:");
+    scanf("%d",&j);
+    a=getindis(bas,j,n);
+    printf("Right");
+    if(a==-1)
+        printf("Eleman dizide yok");
+    else
+        printf("Indis no= %d",a);
+        return 0;
+}
