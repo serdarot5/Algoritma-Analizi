@@ -1,0 +1,9 @@
+myList[]
+for i in range (10000):
+	size1=getsizeof(myList)
+	myList.append(i)
+	size2=getsizeof(mylist)
+	if(size1 != size2):
+		print("Dizi boyutu değişti yeni boyut=",i)
+	else:
+		print("Dizi boyutu değişmedi")
