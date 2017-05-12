@@ -1,0 +1,99 @@
+#include<iostream.h>
+#include<conio.h>
+void main()
+{
+    int i1,i2,i3,t1,t2,n;
+ 
+    int k0[];
+    int k1[];
+    int k2[];
+    cout<<"Limiti giriniz \n";
+    cin>>n;
+    cout<<"\n"<<n<<"Adet Sayi Giriniz:\n";
+    for(i1=0;i1<n;i1++)
+    {
+        cin>>k0[i1];
+    }
+ 
+ 
+    //ilk merkez
+    int m1;
+    int m2;
+ 
+    cout<<"\n 1. Merkezi Giriniz:";
+    cin>>m1;
+    cout<<"\n 2. Merkezi Giriniz:";
+    cin>>m2;
+     
+    int om1,om2;    //eski merkez
+ 
+    do
+    {
+     
+    //eski merkezin atanması
+    om1=m1;
+    om2=m2;
+ 
+    //kümelerin oluşturulması
+    i1=i2=i3=0;
+    for(i1=0;i1<n;i1++)
+    {
+        //Uzaklık hesaplaması
+        t1=k0[i1]-m1;
+        if(t1<0){t1=-t1;}
+ 
+        t2=k0[i1]-m2;
+        if(t2<0){t2=-t2;}
+ 
+        if(t1<t2)
+        {
+            //1. merkeze daha yakinsa
+            k1[i2]=k0[i1];
+            i2++;
+        }
+        else
+        {
+            //2. merkeze daha yakinsa
+            k2[i3]=k0[i1];
+            i3++;
+        }
+ 
+    }
+ 
+    t2=0;
+    //Yeni merkez hesaplaması
+    for(t1=0;t1<i2;t1++)
+    {
+        t2=t2+k1[t1];
+    }
+    m1=t2/i2;
+ 
+    t2=0;
+    for(t1=0;t1<i3;t1++)
+    {
+        t2=t2+k2[t1];
+    }
+    m2=t2/i3;
+ 
+    //Kümelerin yazılması
+    cout<<"\nKüme 1:";
+    for(t1=0;t1<i2;t1++)
+    {
+        cout<<k1[t1]<<" ";
+    }
+    cout<<"\nm1="<<m1;
+ 
+    cout<<"\nKüme 2:";
+    for(t1=0;t1<i3;t1++)
+    {
+        cout<<k2[t1]<<" ";
+    }
+    cout<<"\n m2="<<m2;
+ 
+    cout<<"\n ----";
+    }while(m1!=om1&&m2!=om2);
+ 
+    cout<<"\n Kümeler oluşturuldu";
+ //Karmaşıklık O(n.k)
+    getch();
+}
